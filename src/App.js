@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './App.css';
 
 
@@ -11,7 +10,7 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    beers: [{name: "foo" }]
+    beers: []
   }
   componentDidMount() {
     fetch("/https://api.punkapi.com/v2/beers").then( (resp) => {
@@ -22,11 +21,18 @@ class App extends React.Component {
   }
 
   render() {
-  return (
-    <div className="App">
-    </div>
-  );
-}
-}
+    return (
+      <div>
+        <h1>
+          Beer List 
+        </h1>
+        {this.state.beers.map((beer) => {
+          console.log(beer)
+          return <h2>{beer.name}</h2>
+        })}
+      </div>
+    );
+  }
+  }
 
 export default App;
